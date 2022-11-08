@@ -10,8 +10,4 @@ import Combine
 
 class Cart {
     var products = CurrentValueSubject<[Product], Never>([])
-    
-    var totalKronar: Double {
-        products.value.map({ $0.price.value }).reduce(0, +)
-    }
 }

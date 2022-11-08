@@ -16,6 +16,16 @@ class ProductCollectionViewCell: UICollectionViewCell {
             if let subtitle = subtitle {
                 subtitleLabel.text = subtitle
             }
+            
+            if let urlString = product?.imageUrl, let imageURL = URL(string: urlString) {
+                UIImage.loadFromURL(imageURL) { [imageView] result in
+                    DispatchQueue.main.async {
+                        if case .success(let wrapped) = result {
+                            imageView.image = wrapped
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -24,6 +34,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

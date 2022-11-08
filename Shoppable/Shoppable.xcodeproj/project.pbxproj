@@ -25,6 +25,7 @@
 		CCD6B0B7291B163F00F60D63 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0B6291B163F00F60D63 /* Cart.swift */; };
 		CCD6B0B9291B16D300F60D63 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0B8291B16D300F60D63 /* CartViewModel.swift */; };
 		CCD6B0BB291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0BA291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift */; };
+		CCD6B0BE291B1DE900F60D63 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CCD6B0B6291B163F00F60D63 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		CCD6B0B8291B16D300F60D63 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		CCD6B0BA291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,9 @@
 		CCD6B06C291AEDDD00F60D63 /* Shoppable */ = {
 			isa = PBXGroup;
 			children = (
+				CCD6B0BC291B1DDD00F60D63 /* Utilities */,
+				CCD6B0B0291B010400F60D63 /* Views */,
+				CCD6B0B3291B090B00F60D63 /* ViewModels */,
 				CCD6B0AB291AF48900F60D63 /* Service */,
 				CCD6B0AA291AF44700F60D63 /* Model */,
 				CCD6B09E291AEF6300F60D63 /* ViewControllers */,
@@ -177,8 +182,6 @@
 		CCD6B0AB291AF48900F60D63 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				CCD6B0B3291B090B00F60D63 /* ViewModels */,
-				CCD6B0B0291B010400F60D63 /* Views */,
 				CCD6B0A7291AF32B00F60D63 /* Catalog Provider */,
 			);
 			path = Service;
@@ -200,6 +203,14 @@
 				CCD6B0BA291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CCD6B0BC291B1DDD00F60D63 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */,
 				CCD6B0BB291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift in Sources */,
 				CCD6B0B7291B163F00F60D63 /* Cart.swift in Sources */,
+				CCD6B0BE291B1DE900F60D63 /* UIImage+.swift in Sources */,
 				CCD6B0A2291AEFB200F60D63 /* ProductCatalogViewController.swift in Sources */,
 				CCD6B0AD291AF4A000F60D63 /* Product.swift in Sources */,
 				CCD6B0B9291B16D300F60D63 /* CartViewModel.swift in Sources */,
