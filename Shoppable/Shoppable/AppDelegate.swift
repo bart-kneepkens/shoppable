@@ -15,12 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let provider = JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!)
-        provider.loadCatalog { result in
-            DispatchQueue.main.async {
-                print(result)
-            }
-        }
         return true
     }
 

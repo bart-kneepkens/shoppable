@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 private enum Section: Hashable{
     case main
@@ -26,6 +27,14 @@ class ProductCatalogViewController: UIViewController {
         }
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        UIActivityIndicatorView()
+    }()
+    
+    private let viewModel = ProductCatalogViewModel(productCatalogProvider: JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!))
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     override func loadView() {
         self.view = collectionView
     }
@@ -33,12 +42,35 @@ class ProductCatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = dataSource
+        navigationItem.rightBarButtonItem = .init(customView: activityIndicator)
         
-        // Fake snapshot for testing data
+        viewModel.loadProducts()
+        
+        viewModel
+            .state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.handleStateChange(state)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func handleStateChange(_ state: ProductCatalogViewModel.State) {
+        switch state {
+        case .loading:
+            activityIndicator.startAnimating()
+        case .loaded(let products):
+            activityIndicator.stopAnimating()
+            applySnapshotToDataSource(using: products)
+        default: break
+        }
+    }
+    
+    private func applySnapshotToDataSource(using products: [Product]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Product>()
         snapshot.appendSections([.main])
-        snapshot.appendItems([Product(id: "1", name: "BART", type: .chair, price: .init(value: 2, currency: .kr), imageUrl: "", info: .init(color: "red", material: "wood", numberOfSeats: 4))], toSection: .main)
-        self.dataSource.applySnapshotUsingReloadData(snapshot)
+        snapshot.appendItems(products, toSection: .main)
+        dataSource.apply(snapshot)
     }
 }
 

@@ -29,7 +29,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         cartViewController.tabBarItem.image = UIImage(systemName: "cart")
         cartViewController.tabBarItem.title = "Cart"
         
-        tabBarController.viewControllers = [productCatalogViewController, cartViewController]
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: productCatalogViewController),
+            UINavigationController(rootViewController: cartViewController)
+        ]
         window.rootViewController = tabBarController
         
         self.window = window
