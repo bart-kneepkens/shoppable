@@ -35,3 +35,13 @@ struct Product: Decodable {
     let imageUrl: String
     let info: Info
 }
+
+extension Product: Hashable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}
