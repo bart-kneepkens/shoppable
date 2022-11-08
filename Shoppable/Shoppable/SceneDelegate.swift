@@ -19,13 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
+        let cart = Cart()
+        let catalogProvider = JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!)
+        
         let tabBarController = UITabBarController()
         
-        let productCatalogViewController = ProductCatalogViewController()
+        let productCatalogViewController = ProductCatalogViewController(viewModel: .init(productCatalogProvider: catalogProvider, cart: cart))
         productCatalogViewController.tabBarItem.image = UIImage(systemName: "book")
         productCatalogViewController.tabBarItem.title = "Product Catalog"
         
-        let cartViewController = CartViewController()
+        let cartViewController = CartViewController(viewModel: .init(cart: cart))
         cartViewController.tabBarItem.image = UIImage(systemName: "cart")
         cartViewController.tabBarItem.title = "Cart"
         

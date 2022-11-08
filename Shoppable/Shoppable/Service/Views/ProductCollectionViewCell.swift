@@ -19,8 +19,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var viewModel: ProductCollectionViewCellViewModel?
+    
     private let imageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -95,8 +97,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-        ])
-
+        ])   
     }
     
     override func prepareForReuse() {
@@ -107,6 +108,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     @objc private func addButtonTapped() {
-        print("ADDDD")
+        guard let product = product else { return }
+        viewModel?.addToCart(product)
     }
 }

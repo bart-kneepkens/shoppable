@@ -19,6 +19,7 @@ class ProductCatalogViewController: UIViewController {
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Product> = {
         let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, Product> { cell, _, product in
             cell.product = product
+            cell.viewModel = .init(cart: self.viewModel.cart)
         }
         
         return UICollectionViewDiffableDataSource(collectionView: collectionView) {
@@ -31,9 +32,16 @@ class ProductCatalogViewController: UIViewController {
         UIActivityIndicatorView()
     }()
     
-    private let viewModel = ProductCatalogViewModel(productCatalogProvider: JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!))
+    private let viewModel: ProductCatalogViewModel
     
     private var cancellables = Set<AnyCancellable>()
+    
+    init(viewModel: ProductCatalogViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented")}
     
     override func loadView() {
         self.view = collectionView

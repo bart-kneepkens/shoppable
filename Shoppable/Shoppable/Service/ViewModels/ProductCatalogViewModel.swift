@@ -19,9 +19,11 @@ class ProductCatalogViewModel {
     var state = CurrentValueSubject<State,Never>(.initial)
     
     private let productCatalogProvider: ProductCatalogProvider
+    let cart: Cart // TODO: Private?
     
-    init(productCatalogProvider: ProductCatalogProvider) {
+    init(productCatalogProvider: ProductCatalogProvider, cart: Cart) {
         self.productCatalogProvider = productCatalogProvider
+        self.cart = cart
     }
     
     func loadProducts() {
