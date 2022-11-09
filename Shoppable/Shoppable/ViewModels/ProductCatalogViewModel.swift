@@ -40,4 +40,8 @@ class ProductCatalogViewModel {
             }
         }
     }
+    
+    func createViewModel(using product: Product) -> ProductCollectionViewCellViewModel {
+        .init(cart: cart, product: product)
+    }
 }

@@ -6,30 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    var product: Product? {
+    var viewModel: ProductCollectionViewCellViewModel? {
         didSet {
-            nameLabel.text = product?.name
-            
-            if let subtitle = subtitle {
-                subtitleLabel.text = subtitle
-            }
-            
-            if let urlString = product?.imageUrl, let imageURL = URL(string: urlString) {
-                UIImage.loadFromURL(imageURL) { [imageView] result in
-                    DispatchQueue.main.async {
-                        if case .success(let wrapped) = result {
-                            imageView.image = wrapped
-                        }
-                    }
-                }
-            }
+            nameLabel.text = viewModel?.productName
+            subtitleLabel.text = viewModel?.productDescription
+            subscribeToProductImageUpdates()
         }
     }
-    
-    var viewModel: ProductCollectionViewCellViewModel?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -59,24 +46,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    private var subtitle: String? {
-        guard let product = product else { return nil }
-        
-        var subtitle: String = "\(product.info.color)"
-        
-        switch product.type {
-        case .couch:
-            if let numberOfSeats = product.info.numberOfSeats {
-                subtitle.append(" - \(numberOfSeats) seats")
-            }
-        case .chair:
-            if let material = product.info.material {
-                subtitle.append(" - \(material)")
-            }
-        }
-        
-        return subtitle
-    }
+    private var viewModelImageCancellable: AnyCancellable?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -108,7 +78,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-        ])   
+        ])
     }
     
     override func prepareForReuse() {
@@ -118,8 +88,18 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     @available(*, unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    private func subscribeToProductImageUpdates() {
+        viewModelImageCancellable = viewModel?
+            .productImageData
+            .compactMap({ $0 }) // Skip nils
+            .compactMap({ UIImage(data: $0) })
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [imageView] image in
+                imageView.image = image
+            })
+    }
+    
     @objc private func addButtonTapped() {
-        guard let product = product else { return }
-        viewModel?.addToCart(product)
+        viewModel?.addToCart()
     }
 }

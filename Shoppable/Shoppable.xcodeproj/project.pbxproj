@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC09C7D1291C3F1B00C9CB3C /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */; };
 		CCD6B06E291AEDDD00F60D63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B06D291AEDDD00F60D63 /* AppDelegate.swift */; };
 		CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B06F291AEDDD00F60D63 /* SceneDelegate.swift */; };
 		CCD6B077291AEDDE00F60D63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD6B076291AEDDE00F60D63 /* Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		CCD6B0B7291B163F00F60D63 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0B6291B163F00F60D63 /* Cart.swift */; };
 		CCD6B0B9291B16D300F60D63 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0B8291B16D300F60D63 /* CartViewModel.swift */; };
 		CCD6B0BB291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0BA291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift */; };
-		CCD6B0BE291B1DE900F60D63 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		CCD6B06A291AEDDD00F60D63 /* Shoppable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoppable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD6B06D291AEDDD00F60D63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD6B06F291AEDDD00F60D63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		CCD6B0B6291B163F00F60D63 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		CCD6B0B8291B16D300F60D63 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		CCD6B0BA291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
-		CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +208,7 @@
 		CCD6B0BC291B1DDD00F60D63 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CCD6B0BD291B1DE900F60D63 /* UIImage+.swift */,
+				CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -348,12 +348,12 @@
 				CCD6B0A0291AEF9300F60D63 /* CartViewController.swift in Sources */,
 				CCD6B0B2291B011A00F60D63 /* ProductCollectionViewCell.swift in Sources */,
 				CCD6B0A9291AF42700F60D63 /* ProductCatalogProvider.swift in Sources */,
+				CC09C7D1291C3F1B00C9CB3C /* ImageDataLoader.swift in Sources */,
 				CCD6B0B5291B092200F60D63 /* ProductCatalogViewModel.swift in Sources */,
 				CCD6B06E291AEDDD00F60D63 /* AppDelegate.swift in Sources */,
 				CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */,
 				CCD6B0BB291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift in Sources */,
 				CCD6B0B7291B163F00F60D63 /* Cart.swift in Sources */,
-				CCD6B0BE291B1DE900F60D63 /* UIImage+.swift in Sources */,
 				CCD6B0A2291AEFB200F60D63 /* ProductCatalogViewController.swift in Sources */,
 				CCD6B0AD291AF4A000F60D63 /* Product.swift in Sources */,
 				CCD6B0B9291B16D300F60D63 /* CartViewModel.swift in Sources */,
