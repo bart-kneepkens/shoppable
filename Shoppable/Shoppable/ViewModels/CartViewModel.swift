@@ -10,10 +10,11 @@ import Combine
 
 class CartViewModel {
     private let cart: Cart
-    private let imageLoader: ImageDataLoader = DefaultImageDataLoader()
+    private let imageDataLoader: ImageDataLoader
     
-    init(cart: Cart) {
+    init(cart: Cart = Dependencies.cart, imageLoader: ImageDataLoader = Dependencies.imageDataLoader) {
         self.cart = cart
+        self.imageDataLoader = imageLoader
     }
     
     lazy var products = cart.products
@@ -28,7 +29,7 @@ class CartViewModel {
     
     func loadProductImage(for product: Product, completion: @escaping ((Result<Data?, Error>) -> Void)) {
         if let imageURL = URL(string: product.imageUrl) {
-            try? imageLoader.loadImage(from: imageURL) { result in
+            imageDataLoader.loadImage(from: imageURL) { result in
                 completion(result)
             }
         }

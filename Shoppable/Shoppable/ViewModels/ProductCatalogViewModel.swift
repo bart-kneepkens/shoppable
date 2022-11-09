@@ -21,7 +21,7 @@ class ProductCatalogViewModel {
     private let productCatalogProvider: ProductCatalogProvider
     let cart: Cart // TODO: Private?
     
-    init(productCatalogProvider: ProductCatalogProvider, cart: Cart) {
+    init(productCatalogProvider: ProductCatalogProvider, cart: Cart = Dependencies.cart) {
         self.productCatalogProvider = productCatalogProvider
         self.cart = cart
     }

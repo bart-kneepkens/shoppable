@@ -11,7 +11,6 @@ import Combine
 class ProductCollectionViewCellViewModel {
     private let cart: Cart
     private let product: Product
-    let imageLoader: ImageDataLoader = DefaultImageDataLoader()
     
     var productName: String {
         product.name
@@ -36,13 +35,12 @@ class ProductCollectionViewCellViewModel {
     
     var productImageData = CurrentValueSubject<Data?, Never>(nil)
     
-    init(cart: Cart, product: Product) {
+    init(cart: Cart, product: Product, imageDataLoader: ImageDataLoader = Dependencies.imageDataLoader) {
         self.cart = cart
         self.product = product
         
         if let imageURL = URL(string: product.imageUrl) {
-            // LOAD
-            try? imageLoader.loadImage(from: imageURL) { [productImageData] result in
+            imageDataLoader.loadImage(from: imageURL) { [productImageData] result in
                 if case .success(let imageData) = result {
                     productImageData.value = imageData
                 }
