@@ -25,17 +25,17 @@ class CartViewController: UIViewController {
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
         totalLabel.text = "Total (kr): "
         totalLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        
         view.addSubview(totalLabel)
-        
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: totalLabel.leadingAnchor, constant: -24),
-            view.centerYAnchor.constraint(equalTo: totalLabel.centerYAnchor)
-        ])
-        
         view.addSubview(totalPriceLabel)
         
         NSLayoutConstraint.activate([
-            totalPriceLabel.leadingAnchor.constraint(equalTo: totalLabel.trailingAnchor, constant: 8),
+            totalLabel.trailingAnchor.constraint(equalTo: totalPriceLabel.leadingAnchor, constant: -8),
+            totalLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            totalPriceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             totalPriceLabel.centerYAnchor.constraint(equalTo: totalLabel.centerYAnchor)
         ])
         
@@ -46,6 +46,8 @@ class CartViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.dataSource = self
         tableView.tableFooterView = footer
+        tableView.rowHeight = 72
+        tableView.register(CartViewControllerTableViewCell.self, forCellReuseIdentifier: CartViewControllerTableViewCell.reuseIdentifier)
         return tableView
     }()
     
@@ -75,12 +77,16 @@ class CartViewController: UIViewController {
             }
             .store(in: &cancellables)
         
-        viewModel.totalKronar.sink { [totalPriceLabel] total in
-            totalPriceLabel.text = String(total)
-        }
-        .store(in: &cancellables)
+        viewModel
+            .totalKronar
+            .sink { [totalPriceLabel] total in
+                totalPriceLabel.text = String(total)
+            }
+            .store(in: &cancellables)
     }
 }
+
+// MARK: UITableViewDataSource
 
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,12 +94,22 @@ extension CartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product = viewModel.products.value[indexPath.row]
-        let cell = UITableViewCell()
-        var state = cell.defaultContentConfiguration()
-        state.text = product.name
-        cell.contentConfiguration = state
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CartViewControllerTableViewCell.reuseIdentifier, for: indexPath) as? CartViewControllerTableViewCell {
+            let product = viewModel.products.value[indexPath.row]
+            cell.product = product
+            
+            viewModel.loadProductImage(for: product) { result in
+                if case .success(let imageData) = result {
+                    DispatchQueue.main.async {
+                        cell.imageData = imageData
+                    }
+                }
+            }
+            
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -10,6 +10,7 @@ import Combine
 
 class CartViewModel {
     private let cart: Cart
+    private let imageLoader: ImageDataLoader = DefaultImageDataLoader()
     
     init(cart: Cart) {
         self.cart = cart
@@ -23,5 +24,13 @@ class CartViewModel {
     
     func removeProduct(atIndex index: IndexPath.Index) {
         cart.products.value.remove(at: index)
+    }
+    
+    func loadProductImage(for product: Product, completion: @escaping ((Result<Data?, Error>) -> Void)) {
+        if let imageURL = URL(string: product.imageUrl) {
+            try? imageLoader.loadImage(from: imageURL) { result in
+                completion(result)
+            }
+        }
     }
 }
