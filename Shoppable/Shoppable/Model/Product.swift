@@ -53,7 +53,7 @@ struct Product: Decodable {
     let name: String
     let type: `Type`
     let price: Price
-    let imageUrl: String
+    let imageUrl: URL
     let info: Info
 }
 
@@ -65,6 +65,6 @@ extension Product: Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        hasher.combine(id)
     }
 }

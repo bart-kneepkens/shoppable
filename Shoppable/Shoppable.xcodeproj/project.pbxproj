@@ -21,7 +21,6 @@
 		CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B06F291AEDDD00F60D63 /* SceneDelegate.swift */; };
 		CCD6B077291AEDDE00F60D63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD6B076291AEDDE00F60D63 /* Assets.xcassets */; };
 		CCD6B07A291AEDDE00F60D63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD6B078291AEDDE00F60D63 /* LaunchScreen.storyboard */; };
-		CCD6B085291AEDDE00F60D63 /* ShoppableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B084291AEDDE00F60D63 /* ShoppableTests.swift */; };
 		CCD6B08F291AEDDE00F60D63 /* ShoppableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B08E291AEDDE00F60D63 /* ShoppableUITests.swift */; };
 		CCD6B091291AEDDE00F60D63 /* ShoppableUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B090291AEDDE00F60D63 /* ShoppableUITestsLaunchTests.swift */; };
 		CCD6B0A0291AEF9300F60D63 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B09F291AEF9300F60D63 /* CartViewController.swift */; };
@@ -72,7 +71,6 @@
 		CCD6B079291AEDDE00F60D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCD6B07B291AEDDE00F60D63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCD6B080291AEDDE00F60D63 /* ShoppableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCD6B084291AEDDE00F60D63 /* ShoppableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppableTests.swift; sourceTree = "<group>"; };
 		CCD6B08A291AEDDE00F60D63 /* ShoppableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD6B08E291AEDDE00F60D63 /* ShoppableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppableUITests.swift; sourceTree = "<group>"; };
 		CCD6B090291AEDDE00F60D63 /* ShoppableUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppableUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				CC09C7E7291C7E2900C9CB3C /* Service */,
 				CC09C7DB291C66DB00C9CB3C /* Testing tools */,
 				CC09C7D8291C64E500C9CB3C /* Utilities */,
-				CCD6B084291AEDDE00F60D63 /* ShoppableTests.swift */,
 			);
 			path = ShoppableTests;
 			sourceTree = "<group>";
@@ -440,7 +437,6 @@
 				CC09C7DA291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift in Sources */,
 				CC09C7E1291C699B00C9CB3C /* NetworkSessionMock.swift in Sources */,
 				CC09C7EF291C847600C9CB3C /* ProductDecodingTests.swift in Sources */,
-				CCD6B085291AEDDE00F60D63 /* ShoppableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

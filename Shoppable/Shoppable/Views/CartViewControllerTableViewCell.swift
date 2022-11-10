@@ -12,13 +12,13 @@ class CartViewControllerTableViewCell: UITableViewCell {
     
     var product: Product? {
         didSet {
-            self.setNeedsUpdateConfiguration()
+            setNeedsUpdateConfiguration()
         }
     }
     
     var imageData: Data? {
         didSet {
-            self.setNeedsUpdateConfiguration()
+            setNeedsUpdateConfiguration()
         }
     }
     

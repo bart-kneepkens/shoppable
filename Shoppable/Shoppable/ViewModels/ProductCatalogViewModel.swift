@@ -13,7 +13,7 @@ class ProductCatalogViewModel {
         case initial
         case loading
         case loaded([Product])
-        case loadingFailed // leaving out associated value error
+        case loadingFailed // leaving out associated value error to remain easily equatable
     }
     
     var state = CurrentValueSubject<State,Never>(.initial)

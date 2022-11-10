@@ -17,7 +17,7 @@ class CartViewController: UIViewController {
         return label
     }()
     
-    private lazy var footer: UIView = {
+    private lazy var footerView: UIView = {
         let view = UIView(frame: .init(x: 0, y: 0, width: 0, height: 44)) // Width is determined by UITableView
         let totalLabel = UILabel()
         totalLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class CartViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.dataSource = self
-        tableView.tableFooterView = footer
+        tableView.tableFooterView = footerView
         tableView.rowHeight = 72
         tableView.register(CartViewControllerTableViewCell.self, forCellReuseIdentifier: CartViewControllerTableViewCell.reuseIdentifier)
         return tableView
@@ -61,7 +61,7 @@ class CartViewController: UIViewController {
     @available(*,unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     override func loadView() {
-        self.view = tableView
+        view = tableView
     }
     
     override func viewDidLoad() {

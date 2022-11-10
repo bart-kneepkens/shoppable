@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-private enum Section: Hashable{
+private enum Section: Hashable {
     case main
 }
 
@@ -27,9 +27,7 @@ class ProductCatalogViewController: UIViewController {
         }
     }()
     
-    private lazy var activityIndicator: UIActivityIndicatorView = {
-        UIActivityIndicatorView()
-    }()
+    private lazy var activityIndicator = UIActivityIndicatorView()
     
     private let viewModel: ProductCatalogViewModel
     

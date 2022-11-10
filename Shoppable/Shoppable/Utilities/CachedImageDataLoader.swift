@@ -18,14 +18,16 @@ class CachedImageDataLoader: ImageDataLoader {
         self.networkSession = networkSession
     }
     
+    /// A published that will either: - return the data for a URL if it is available in cache, or - fetch the data from the URL and return it.
+    /// Whenever a fetch occurs, the data is added to the cache.
+    /// Publisher is always received on the main dispatchQueue
     func loadImage(from url: URL) -> AnyPublisher<Data?, Never> {
         let absoluteURLString = url.absoluteString
         let cacheKey = NSString(string: absoluteURLString)
         
         if let cachedNSData = cache.object(forKey: cacheKey) {
             let cachedData = Data(referencing: cachedNSData)
-            return Just(cachedData)
-                .eraseToAnyPublisher()
+            return Just(cachedData).eraseToAnyPublisher()
         }
         
         return networkSession

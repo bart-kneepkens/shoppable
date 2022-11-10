@@ -40,11 +40,9 @@ class ProductCollectionViewCellViewModel {
         self.cart = cart
         self.product = product
         
-        if let imageURL = URL(string: product.imageUrl) {
-            cancellable = imageDataLoader
-                .loadImage(from: imageURL)
-                .subscribe(productImageData)
-        }
+        cancellable = imageDataLoader
+            .loadImage(from: product.imageUrl)
+            .subscribe(productImageData)
     }
     
     func addToCart() {

@@ -28,10 +28,6 @@ class CartViewModel {
     }
     
     func loadProductImage(for product: Product) -> AnyPublisher<Data?, Never> {
-        if let imageURL = URL(string: product.imageUrl) {
-            return imageDataLoader
-                .loadImage(from: imageURL)
-        }
-        return Just(nil).eraseToAnyPublisher()
+        imageDataLoader.loadImage(from: product.imageUrl)
     }
 }
