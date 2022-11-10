@@ -30,7 +30,7 @@ class CartViewControllerTableViewCell: UITableViewCell {
         contentConfig.text = product?.name
         
         if let price = product?.price {
-            contentConfig.secondaryText = "\(price.currency.rawValue) \(String(price.value))"
+            contentConfig.secondaryText = "\(price.currency.shortDescription) \(String(price.value))"
         }
         
         if let imageData = imageData, let image = UIImage(data: imageData) {
