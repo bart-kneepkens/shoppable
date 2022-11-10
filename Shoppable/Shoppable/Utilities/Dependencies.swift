@@ -9,6 +9,6 @@ import Foundation
 
 // This class is used to pass dependencies between consumers that need them.
 class Dependencies {
-    static let imageDataLoader: ImageDataLoader = CachedImageDataLoader(cache: .init())
+    static var imageDataLoader: ImageDataLoader = CachedImageDataLoader(cache: .init())
     static let cart = Cart()
 }

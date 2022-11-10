@@ -9,9 +9,6 @@ import Foundation
 import Combine
 
 class ProductCollectionViewCellViewModel {
-    private let cart: Cart
-    private let product: Product
-    
     var productName: String {
         product.name
     }
@@ -35,16 +32,18 @@ class ProductCollectionViewCellViewModel {
     
     var productImageData = CurrentValueSubject<Data?, Never>(nil)
     
+    private let cart: Cart
+    private let product: Product
+    private var cancellable: AnyCancellable?
+    
     init(cart: Cart, product: Product, imageDataLoader: ImageDataLoader = Dependencies.imageDataLoader) {
         self.cart = cart
         self.product = product
         
         if let imageURL = URL(string: product.imageUrl) {
-            imageDataLoader.loadImage(from: imageURL) { [productImageData] result in
-                if case .success(let imageData) = result {
-                    productImageData.value = imageData
-                }
-            }
+            cancellable = imageDataLoader
+                .loadImage(from: imageURL)
+                .subscribe(productImageData)
         }
     }
     

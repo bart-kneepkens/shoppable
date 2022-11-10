@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC09C7D1291C3F1B00C9CB3C /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */; };
+		CC09C7D1291C3F1B00C9CB3C /* CachedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D0291C3F1B00C9CB3C /* CachedImageDataLoader.swift */; };
 		CC09C7D3291C50B800C9CB3C /* CartViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D2291C50B800C9CB3C /* CartViewControllerTableViewCell.swift */; };
 		CC09C7D5291C569E00C9CB3C /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D4291C569E00C9CB3C /* Dependencies.swift */; };
+		CC09C7D7291C5C5400C9CB3C /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D6291C5C5400C9CB3C /* ImageDataLoader.swift */; };
+		CC09C7DA291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7D9291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift */; };
+		CC09C7DF291C675A00C9CB3C /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7DE291C675A00C9CB3C /* NetworkSession.swift */; };
+		CC09C7E1291C699B00C9CB3C /* NetworkSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09C7E0291C699B00C9CB3C /* NetworkSessionMock.swift */; };
 		CCD6B06E291AEDDD00F60D63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B06D291AEDDD00F60D63 /* AppDelegate.swift */; };
 		CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD6B06F291AEDDD00F60D63 /* SceneDelegate.swift */; };
 		CCD6B077291AEDDE00F60D63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD6B076291AEDDE00F60D63 /* Assets.xcassets */; };
@@ -48,9 +52,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
+		CC09C7D0291C3F1B00C9CB3C /* CachedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageDataLoader.swift; sourceTree = "<group>"; };
 		CC09C7D2291C50B800C9CB3C /* CartViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		CC09C7D4291C569E00C9CB3C /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		CC09C7D6291C5C5400C9CB3C /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
+		CC09C7D9291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageDataLoaderTests.swift; sourceTree = "<group>"; };
+		CC09C7DE291C675A00C9CB3C /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		CC09C7E0291C699B00C9CB3C /* NetworkSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionMock.swift; sourceTree = "<group>"; };
 		CCD6B06A291AEDDD00F60D63 /* Shoppable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoppable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD6B06D291AEDDD00F60D63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD6B06F291AEDDD00F60D63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +108,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC09C7D8291C64E500C9CB3C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CC09C7D9291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CC09C7DB291C66DB00C9CB3C /* Testing tools */ = {
+			isa = PBXGroup;
+			children = (
+				CC09C7E0291C699B00C9CB3C /* NetworkSessionMock.swift */,
+			);
+			path = "Testing tools";
+			sourceTree = "<group>";
+		};
 		CCD6B061291AEDDD00F60D63 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +166,8 @@
 		CCD6B083291AEDDE00F60D63 /* ShoppableTests */ = {
 			isa = PBXGroup;
 			children = (
+				CC09C7DB291C66DB00C9CB3C /* Testing tools */,
+				CC09C7D8291C64E500C9CB3C /* Utilities */,
 				CCD6B084291AEDDE00F60D63 /* ShoppableTests.swift */,
 			);
 			path = ShoppableTests;
@@ -213,8 +239,10 @@
 		CCD6B0BC291B1DDD00F60D63 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CC09C7D0291C3F1B00C9CB3C /* ImageDataLoader.swift */,
+				CC09C7D0291C3F1B00C9CB3C /* CachedImageDataLoader.swift */,
 				CC09C7D4291C569E00C9CB3C /* Dependencies.swift */,
+				CC09C7D6291C5C5400C9CB3C /* ImageDataLoader.swift */,
+				CC09C7DE291C675A00C9CB3C /* NetworkSession.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -354,14 +382,16 @@
 				CCD6B0A0291AEF9300F60D63 /* CartViewController.swift in Sources */,
 				CCD6B0B2291B011A00F60D63 /* ProductCollectionViewCell.swift in Sources */,
 				CC09C7D5291C569E00C9CB3C /* Dependencies.swift in Sources */,
+				CC09C7D7291C5C5400C9CB3C /* ImageDataLoader.swift in Sources */,
 				CCD6B0A9291AF42700F60D63 /* ProductCatalogProvider.swift in Sources */,
 				CC09C7D3291C50B800C9CB3C /* CartViewControllerTableViewCell.swift in Sources */,
-				CC09C7D1291C3F1B00C9CB3C /* ImageDataLoader.swift in Sources */,
+				CC09C7D1291C3F1B00C9CB3C /* CachedImageDataLoader.swift in Sources */,
 				CCD6B0B5291B092200F60D63 /* ProductCatalogViewModel.swift in Sources */,
 				CCD6B06E291AEDDD00F60D63 /* AppDelegate.swift in Sources */,
 				CCD6B070291AEDDD00F60D63 /* SceneDelegate.swift in Sources */,
 				CCD6B0BB291B19CD00F60D63 /* ProductCollectionViewCellViewModel.swift in Sources */,
 				CCD6B0B7291B163F00F60D63 /* Cart.swift in Sources */,
+				CC09C7DF291C675A00C9CB3C /* NetworkSession.swift in Sources */,
 				CCD6B0A2291AEFB200F60D63 /* ProductCatalogViewController.swift in Sources */,
 				CCD6B0AD291AF4A000F60D63 /* Product.swift in Sources */,
 				CCD6B0B9291B16D300F60D63 /* CartViewModel.swift in Sources */,
@@ -372,6 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC09C7DA291C64FE00C9CB3C /* CachedImageDataLoaderTests.swift in Sources */,
+				CC09C7E1291C699B00C9CB3C /* NetworkSessionMock.swift in Sources */,
 				CCD6B085291AEDDE00F60D63 /* ShoppableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

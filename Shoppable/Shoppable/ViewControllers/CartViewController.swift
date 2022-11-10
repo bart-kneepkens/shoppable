@@ -10,8 +10,6 @@ import Combine
 
 class CartViewController: UIViewController {
     
-    private let viewModel: CartViewModel
-    
     private lazy var totalPriceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +49,7 @@ class CartViewController: UIViewController {
         return tableView
     }()
     
+    private let viewModel: CartViewModel
     private var cancellables = Set<AnyCancellable>()
     
     init(viewModel: CartViewModel) {
@@ -96,13 +95,13 @@ extension CartViewController: UITableViewDataSource {
             let product = viewModel.products.value[indexPath.row]
             cell.product = product
             
-            viewModel.loadProductImage(for: product) { result in
-                if case .success(let imageData) = result {
-                    DispatchQueue.main.async {
-                        cell.imageData = imageData
-                    }
+            viewModel
+                .loadProductImage(for: product)
+                .compactMap({ $0 })
+                .sink { data in
+                    cell.imageData = data
                 }
-            }
+                .store(in: &cancellables)
             
             return cell
         }

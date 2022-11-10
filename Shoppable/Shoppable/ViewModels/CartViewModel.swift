@@ -9,6 +9,12 @@ import Foundation
 import Combine
 
 class CartViewModel {
+    lazy var products = cart.products
+    
+    lazy var totalKronar = cart.products.map { products in
+        products.map({ $0.price.value }).reduce(0, +)
+    }
+    
     private let cart: Cart
     private let imageDataLoader: ImageDataLoader
     
@@ -17,21 +23,15 @@ class CartViewModel {
         self.imageDataLoader = imageLoader
     }
     
-    lazy var products = cart.products
-    
-    lazy var totalKronar = cart.products.map { products in
-        products.map({ $0.price.value }).reduce(0, +)
-    }
-    
     func removeProduct(atIndex index: IndexPath.Index) {
         cart.products.value.remove(at: index)
     }
     
-    func loadProductImage(for product: Product, completion: @escaping ((Result<Data?, Error>) -> Void)) {
+    func loadProductImage(for product: Product) -> AnyPublisher<Data?, Never> {
         if let imageURL = URL(string: product.imageUrl) {
-            imageDataLoader.loadImage(from: imageURL) { result in
-                completion(result)
-            }
+            return imageDataLoader
+                .loadImage(from: imageURL)
         }
+        return Just(nil).eraseToAnyPublisher()
     }
 }
