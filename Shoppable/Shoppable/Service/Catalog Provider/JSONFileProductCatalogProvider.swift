@@ -14,8 +14,8 @@ private struct ProductFile: Decodable {
 class JSONFileProductCatalogProvider: ProductCatalogProvider {
     private let url: URL
     
-    init(_ url: URL) {
-        assert(url.isFileURL)
+    init(_ url: URL) throws {
+        guard url.isFileURL else { throw JSONFilecatalogProviderError.nonLocalURL }
         self.url = url
     }
     
@@ -30,5 +30,11 @@ class JSONFileProductCatalogProvider: ProductCatalogProvider {
                 completion(.failure(error))
             }
         }
+    }
+}
+
+extension JSONFileProductCatalogProvider {
+    enum JSONFilecatalogProviderError: Error {
+        case nonLocalURL
     }
 }

@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let catalogProvider = JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!)
+        // This force try will crash the app in case the bundled file is missing - this indicates a programmer error.
+        let catalogProvider = try! JSONFileProductCatalogProvider(Bundle.main.url(forResource: "products", withExtension: "json")!)
         
         let tabBarController = UITabBarController()
         
@@ -35,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: productCatalogViewController),
             UINavigationController(rootViewController: cartViewController)
         ]
+        
         window.rootViewController = tabBarController
         
         self.window = window
