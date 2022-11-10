@@ -17,8 +17,8 @@ class ProductCatalogViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: productCollectionLayout)
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Product> = {
-        let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, Product> { cell, _, product in
-            cell.viewModel = .init(cart: self.viewModel.cart, product: product)
+        let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, Product> { [viewModel] cell, _, product in
+            cell.viewModel = viewModel.createViewModel(using: product)
         }
         
         return UICollectionViewDiffableDataSource(collectionView: collectionView) {

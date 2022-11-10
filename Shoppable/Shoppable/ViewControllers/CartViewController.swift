@@ -55,6 +55,7 @@ class CartViewController: UIViewController {
     init(viewModel: CartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        setUpCartItemsBadgeNumberUpdates()
     }
     
     @available(*,unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -78,6 +79,16 @@ class CartViewController: UIViewController {
             .totalKronar
             .sink { [totalPriceLabel] total in
                 totalPriceLabel.text = String(total)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setUpCartItemsBadgeNumberUpdates() {
+        viewModel
+            .products
+            .map(\.count)
+            .sink { [tabBarItem] numberOfProducts in
+                tabBarItem?.badgeValue = numberOfProducts > 0 ? String(numberOfProducts) : nil
             }
             .store(in: &cancellables)
     }
