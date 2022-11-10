@@ -36,6 +36,8 @@ class ProductCatalogViewController: UIViewController {
     init(viewModel: ProductCatalogViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        tabBarItem.image = UIImage(systemName: "book")
+        title = "Product Catalog"
     }
     
     @available(*, unavailable) required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented")}

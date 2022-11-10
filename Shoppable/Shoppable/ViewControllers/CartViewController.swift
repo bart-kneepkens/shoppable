@@ -55,6 +55,8 @@ class CartViewController: UIViewController {
     init(viewModel: CartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        tabBarItem.image = UIImage(systemName: "cart")
+        title = "Cart"
         setUpCartItemsBadgeNumberUpdates()
     }
     
@@ -66,7 +68,6 @@ class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Cart"
         
         viewModel
             .products
